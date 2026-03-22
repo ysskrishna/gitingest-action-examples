@@ -142,16 +142,20 @@ The action has built-in limits to prevent excessive processing. Understanding th
 - **Security Audits** — Analyze full repository content for security reviews
 - **Migration Planning** — Understand codebase structure before major refactors
 
-## Related Resources
-
-- [gitingest-action on GitHub Marketplace](https://github.com/marketplace/actions/gitingest)
-- [gitingest-action Repository](https://github.com/ysskrishna/gitingest-action)
-- [gitingest CLI Tool](https://github.com/coderamp-labs/gitingest)
-
 ## License
 
-MIT — See [LICENSE](LICENSE) file for details.
+MIT © [Y. Siva Sai Krishna](https://github.com/ysskrishna) — see [LICENSE](LICENSE) for details.
+
+## Credits
+
+Examples for [gitingest-action](https://github.com/ysskrishna/gitingest-action). Built on [gitingest](https://github.com/coderamp-labs/gitingest).
 
 ---
 
-**Note:** This is an examples repository. For action source code and issues, visit [ysskrishna/gitingest-action](https://github.com/ysskrishna/gitingest-action).
+<p align="left">
+  <a href="https://github.com/ysskrishna">Author's GitHub</a> •
+  <a href="https://linkedin.com/in/ysskrishna">Author's LinkedIn</a> •
+  <a href="https://github.com/marketplace/actions/gitingest">GitHub Marketplace</a> •
+  <a href="https://github.com/ysskrishna/gitingest-action">gitingest-action</a> •
+  <a href="https://github.com/coderamp-labs/gitingest">gitingest Documentation</a>
+</p>
