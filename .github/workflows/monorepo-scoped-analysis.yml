@@ -20,10 +20,10 @@ jobs:
             *.ini
             *.cfg
           exclude-patterns: |
-            __pycache__/*
+            **/__pycache__/**
             *.pyc
-            .venv/*
-            venv/*
+            **/.venv/**
+            **/venv/**
           max-file-size: '5242880'
 
       - name: Display backend analysis

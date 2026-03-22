@@ -17,8 +17,8 @@ jobs:
             *.py
             *.md
           exclude-patterns: |
-            tests/*
-            docs/*
+            **/tests/**
+            **/docs/**
 
       - name: Display filtered results
         run: |

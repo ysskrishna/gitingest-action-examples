@@ -19,6 +19,10 @@ jobs:
           source: 'https://github.com/ysskrishna/container-detect'
           output-dir: 'digest'
 
+      - name: Generate date suffix
+        id: date
+        run: echo "today=$(date +%Y-%m-%d)" >> "$GITHUB_OUTPUT"
+
       - name: Display digest summary
         run: |
           echo "📅 Weekly Repository Digest:"
@@ -30,11 +34,11 @@ jobs:
       - name: Upload weekly digest artifact
         uses: actions/upload-artifact@v4
         with:
-          name: weekly-digest-${{ github.run_id }}
+          name: weekly-digest-${{ steps.date.outputs.today }}-${{ github.run_id }}
           path: digest/
 
       - name: Artifact info
         run: |
           echo ""
-          echo "✅ Weekly digest archived as: weekly-digest-${{ github.run_id }}"
+          echo "✅ Weekly digest archived as: weekly-digest-${{ steps.date.outputs.today }}-${{ github.run_id }}"
           echo "📦 Contains complete repository snapshot for $(date +%Y-%m-%d)"

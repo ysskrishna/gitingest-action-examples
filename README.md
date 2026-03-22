@@ -4,7 +4,7 @@
 [![GitHub Action](https://img.shields.io/badge/action-gitingest-orange?logo=github-actions)](https://github.com/ysskrishna/gitingest-action)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-Ready-to-use GitHub Actions workflows demonstrating all features of [gitingest-action](https://github.com/marketplace/actions/gitingest) — a tool that creates comprehensive digests of your codebase for AI analysis, documentation, and code review.
+Ready-to-use GitHub Actions workflows demonstrating common [gitingest-action](https://github.com/marketplace/actions/gitingest) patterns — a tool that creates comprehensive digests of your codebase for AI analysis, documentation, and code review.
 
 ## Quick Start
 
@@ -16,6 +16,8 @@ Add this to any workflow to analyze your repository:
 ```
 
 Browse the [examples](#-usage-examples) below for advanced patterns and features.
+
+These examples focus on common workflows. Additional supported inputs include `include-gitignored` and `include-submodules`.
 
 ## Inputs
 
@@ -103,6 +105,10 @@ Recommended setup:
 - Store the token in your repository or organization Actions secrets as `PRIVATE_REPO_TOKEN`
 - Grant least-privilege read access to the target private repository
 - Avoid hardcoding tokens directly in workflow files
+
+## Security Hardening
+
+For production workflows, prefer pinning third-party actions to commit SHAs instead of floating tags (for example, `@v1` or `@v4`) to reduce supply-chain risk.
 
 ## Large Repositories
 
