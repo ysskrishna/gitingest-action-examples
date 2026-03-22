@@ -1,10 +1,27 @@
+# Workspace directory
 workspace/
+
+# Python artifacts
 __pycache__/
 *.py[cod]
 *.egg-info/
+
+# OS files
 .DS_Store
 Thumbs.db
+
+# IDE files
 .vscode/
 .idea/
+
+# gitingest-action output directories
 gitingest-output/
 output/
+digest/
+
+# Dependencies
+node_modules/
+
+# Environment variables
+.env
+.env.local

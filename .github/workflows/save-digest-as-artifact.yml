@@ -1,0 +1,17 @@
+name: Save Digest as Artifact
+on: workflow_dispatch
+
+jobs:
+  digest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: ysskrishna/gitingest-action@v1
+        with:
+          output-dir: 'digest'
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: repo-digest
+          path: digest/

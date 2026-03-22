@@ -1,0 +1,17 @@
+name: Selective Artifact Upload
+on: workflow_dispatch
+
+jobs:
+  digest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: ysskrishna/gitingest-action@v1
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: repo-overview
+          path: |
+            gitingest-output/summary.txt
+            gitingest-output/tree.txt

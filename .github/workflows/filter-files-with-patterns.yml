@@ -1,0 +1,20 @@
+name: Filter Files with Patterns
+on: workflow_dispatch
+
+jobs:
+  digest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: ysskrishna/gitingest-action@v1
+        with:
+          include-patterns: |
+            *.py
+            *.md
+          exclude-patterns: |
+            tests/*
+            docs/*
+
+      - name: Print summary
+        run: cat gitingest-output/summary.txt

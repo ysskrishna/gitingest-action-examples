@@ -1,0 +1,15 @@
+name: Analyze Remote Repository
+on: workflow_dispatch
+
+jobs:
+  digest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: ysskrishna/gitingest-action@v1
+        id: digest
+        with:
+          source: 'https://github.com/coderamp-labs/gitingest'
+          branch: 'main'
+
+      - name: Print summary
+        run: cat ${{ steps.digest.outputs.summary-file }}
