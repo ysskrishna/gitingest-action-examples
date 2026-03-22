@@ -8,16 +8,15 @@ Ready-to-use GitHub Actions workflows demonstrating common [gitingest-action](ht
 
 ## Quick Start
 
-Add this to any workflow to analyze your repository:
+Analyze any repository remotely without cloning:
 
 ```yaml
-- uses: actions/checkout@v4
 - uses: ysskrishna/gitingest-action@v1
+  with:
+    source: 'https://github.com/owner/repo'
 ```
 
-Browse the [examples](#-usage-examples) below for advanced patterns and features.
-
-These examples focus on common workflows. Additional supported inputs include `include-gitignored` and `include-submodules`.
+Browse the [examples](#usage-examples) below for advanced patterns and features.
 
 ## Inputs
 
