@@ -1,0 +1,41 @@
+name: Run All Examples
+on: workflow_dispatch
+
+jobs:
+  trigger-all:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger all example workflows
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          echo "🚀 Triggering all example workflows..."
+
+          # Array of workflow files to trigger
+          workflows=(
+            "analyze-remote-repo.yml"
+            "filter-files-with-patterns.yml"
+            "analyze-specific-tag.yml"
+            "analyze-private-repo.yml"
+            "save-digest-as-artifact.yml"
+            "selective-artifact-upload.yml"
+            "monorepo-scoped-analysis.yml"
+            "scheduled-weekly-digest.yml"
+          )
+
+          # Trigger each workflow
+          for workflow in "${workflows[@]}"; do
+            echo "📋 Triggering: $workflow"
+            gh workflow run "$workflow" \
+              --repo ${{ github.repository }} \
+              --ref ${{ github.ref_name }}
+
+            # Small delay to avoid rate limiting
+            sleep 1
+          done
+
+          echo ""
+          echo "✅ All workflows triggered successfully!"
+          echo ""
+          echo "🔗 View workflow runs:"
+          echo "   https://github.com/${{ github.repository }}/actions"

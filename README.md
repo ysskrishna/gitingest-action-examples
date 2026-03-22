@@ -50,6 +50,14 @@ The action generates three files in the output directory:
 
 ## Usage Examples
 
+### Master Workflow
+
+| Workflow | Description | Key Features |
+|----------|-------------|--------------|
+| [**🚀 Run All Examples**](.github/workflows/run-all-examples.yml) | **Trigger all 8 workflows at once** | Batch execution with single click |
+
+### Individual Examples
+
 | Workflow | Description | Key Features |
 |----------|-------------|--------------|
 | [**Analyze Remote Repository**](.github/workflows/analyze-remote-repo.yml) | Analyze a repo you don't own | `source`, `branch` |
@@ -63,11 +71,18 @@ The action generates three files in the output directory:
 
 ### Running the Examples
 
+**Option 1: Run all examples at once** (recommended for testing)
 1. Fork this repository
 2. Navigate to **Actions** tab in your fork
-3. Select any workflow from the list
+3. Select **"Run All Examples"** workflow
 4. Click **Run workflow** button
-5. View the workflow run to see the digest output
+5. All 8 example workflows will be triggered simultaneously
+
+**Option 2: Run individual examples**
+1. Navigate to **Actions** tab
+2. Select any specific workflow from the list
+3. Click **Run workflow** button
+4. View the workflow run to see the digest output
 
 Each workflow uses `workflow_dispatch` so you can trigger it manually and see results immediately.
 
