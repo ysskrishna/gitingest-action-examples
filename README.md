@@ -66,7 +66,7 @@ The action generates three files in the output directory:
 | [**Analyze Private Repository**](.github/workflows/analyze-private-repo.yml) | Use token for private repo access | `token` |
 | [**Save Digest as Artifact**](.github/workflows/save-digest-as-artifact.yml) | Persist full output as downloadable artifact | `output-dir`, `upload-artifact` |
 | [**Selective Artifact Upload**](.github/workflows/selective-artifact-upload.yml) | Upload only summary/tree to save space | Artifact path filtering |
-| [**Monorepo - Scoped Analysis**](.github/workflows/monorepo-scoped-analysis.yml) | Analyze subdirectory with file filtering | Local path, patterns, `max-file-size` |
+| [**Monorepo - Analyze Backend Only**](.github/workflows/monorepo-scoped-analysis.yml) | Analyze specific directory of a monorepo with filtering | `source` (subdirectory), `include-patterns`, `exclude-patterns`, `max-file-size` |
 | [**Scheduled Weekly Digest**](.github/workflows/scheduled-weekly-digest.yml) | Run on cron schedule with artifacts | `schedule` trigger, dated artifacts |
 
 ### Running the Examples
@@ -112,6 +112,10 @@ The action has built-in limits to prevent excessive processing. Understanding th
 
 2. **Analyze subdirectories** — Focus on specific packages in monorepos:
    ```yaml
+   # For remote repos, use the full tree URL
+   source: 'https://github.com/owner/repo/tree/main/backend'
+
+   # For local repos after checkout
    source: './packages/core'
    ```
 

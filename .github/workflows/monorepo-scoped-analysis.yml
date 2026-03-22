@@ -1,24 +1,26 @@
-name: Monorepo - Scoped Analysis
+name: Monorepo - Analyze Backend Only
 on: workflow_dispatch
 
 jobs:
   digest:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-
       - uses: ysskrishna/gitingest-action@v1
+        id: digest
         with:
-          source: './packages/my-package'
+          source: 'https://github.com/ysskrishna/fastapi-nextjs-clerk/tree/main/backend'
           include-patterns: |
-            *.ts
-            *.tsx
-            *.json
+            *.py
+            *.txt
+            *.toml
+            *.ini
+            *.cfg
           exclude-patterns: |
-            node_modules/*
-            dist/*
-            *.test.ts
+            __pycache__/*
+            *.pyc
+            .venv/*
+            venv/*
           max-file-size: '5242880'
 
       - name: Print summary
-        run: cat gitingest-output/summary.txt
+        run: cat ${{ steps.digest.outputs.summary-file }}
