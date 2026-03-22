@@ -6,9 +6,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: ysskrishna/gitingest-action@v1
+        id: digest
         with:
-          source: 'https://github.com/owner/private-repo'
+          source: 'https://github.com/ysskrishna/theprovenclub-backend'
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Print summary
-        run: cat gitingest-output/summary.txt
+        run: cat ${{ steps.digest.outputs.summary-file }}

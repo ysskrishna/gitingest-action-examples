@@ -8,8 +8,12 @@ jobs:
       - uses: actions/checkout@v4
 
       - uses: ysskrishna/gitingest-action@v1
+        id: digest
         with:
           output-dir: 'digest'
+
+      - name: Print summary
+        run: cat ${{ steps.digest.outputs.summary-file }}
 
       - uses: actions/upload-artifact@v4
         with:
