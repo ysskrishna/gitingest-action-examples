@@ -1,6 +1,10 @@
 name: Run All Examples
 on: workflow_dispatch
 
+permissions:
+  actions: write
+  contents: read
+
 jobs:
   trigger-all:
     runs-on: ubuntu-latest
@@ -39,3 +43,9 @@ jobs:
           echo ""
           echo "🔗 View workflow runs:"
           echo "   https://github.com/${{ github.repository }}/actions"
+
+      - name: Summary
+        run: |
+          echo "### 🎯 Triggered All Example Workflows" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "🔗 [View all workflow runs](https://github.com/${{ github.repository }}/actions)" >> $GITHUB_STEP_SUMMARY
