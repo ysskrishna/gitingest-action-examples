@@ -54,7 +54,7 @@ The action generates three files in the output directory:
 
 | Workflow | Description | Key Features |
 |----------|-------------|--------------|
-| [**🚀 Run All Examples**](.github/workflows/run-all-examples.yml) | **Trigger all 8 workflows at once** | Batch execution with single click |
+| [**🚀 Run All Examples**](.github/workflows/run-all-examples.yml) | **Trigger all 7 workflows at once** | Batch execution with single click |
 
 ### Individual Examples
 
@@ -63,7 +63,6 @@ The action generates three files in the output directory:
 | [**Analyze Remote Repository**](.github/workflows/analyze-remote-repo.yml) | Analyze a repo you don't own | `source`, `branch` |
 | [**Filter Files with Patterns**](.github/workflows/filter-files-with-patterns.yml) | Scope analysis to specific file types | `include-patterns`, `exclude-patterns` |
 | [**Analyze Specific Tag**](.github/workflows/analyze-specific-tag.yml) | Pin analysis to a tagged release | `tag` |
-| [**Analyze Private Repository**](.github/workflows/analyze-private-repo.yml) | Use token for private repo access | `token` |
 | [**Save Digest as Artifact**](.github/workflows/save-digest-as-artifact.yml) | Persist full output as downloadable artifact | `output-dir`, `upload-artifact` |
 | [**Selective Artifact Upload**](.github/workflows/selective-artifact-upload.yml) | Upload only summary/tree to save space | Artifact path filtering |
 | [**Monorepo - Analyze Backend Only**](.github/workflows/monorepo-scoped-analysis.yml) | Analyze specific directory of a monorepo with filtering | `source` (subdirectory), `include-patterns`, `exclude-patterns`, `max-file-size` |
@@ -76,7 +75,7 @@ The action generates three files in the output directory:
 2. Navigate to **Actions** tab in your fork
 3. Select **"Run All Examples"** workflow
 4. Click **Run workflow** button
-5. All 8 example workflows will be triggered simultaneously
+5. All 7 example workflows will be triggered simultaneously
 
 **Option 2: Run individual examples**
 1. Navigate to **Actions** tab
@@ -85,6 +84,25 @@ The action generates three files in the output directory:
 4. View the workflow run to see the digest output
 
 Each workflow uses `workflow_dispatch` so you can trigger it manually and see results immediately.
+
+## Private Repository Access
+
+This examples repository does not include a dedicated private-repo workflow by default, because private repository analysis requires user-managed credentials.
+
+If you need to analyze a private repository, create your own workflow and pass a token to `gitingest-action`:
+
+```yaml
+- uses: ysskrishna/gitingest-action@v1
+  with:
+    source: 'https://github.com/owner/private-repo'
+    token: ${{ secrets.PRIVATE_REPO_TOKEN }}
+```
+
+Recommended setup:
+
+- Store the token in your repository or organization Actions secrets as `PRIVATE_REPO_TOKEN`
+- Grant least-privilege read access to the target private repository
+- Avoid hardcoding tokens directly in workflow files
 
 ## Large Repositories
 

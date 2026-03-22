@@ -20,7 +20,6 @@ jobs:
             "analyze-remote-repo.yml"
             "filter-files-with-patterns.yml"
             "analyze-specific-tag.yml"
-            "analyze-private-repo.yml"
             "save-digest-as-artifact.yml"
             "selective-artifact-upload.yml"
             "monorepo-scoped-analysis.yml"
