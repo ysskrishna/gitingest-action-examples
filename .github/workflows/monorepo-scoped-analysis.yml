@@ -5,7 +5,11 @@ jobs:
   digest:
     runs-on: ubuntu-latest
     steps:
-      - uses: ysskrishna/gitingest-action@v1
+      # This example analyzes only the backend directory of a monorepo
+      # Useful for: Focusing on specific packages, analyzing subdirectories independently
+      # Note: Uses tree URL format for remote subdirectories
+      - name: Analyze backend subdirectory only
+        uses: ysskrishna/gitingest-action@v1
         id: digest
         with:
           source: 'https://github.com/ysskrishna/fastapi-nextjs-clerk/tree/main/backend'
@@ -22,5 +26,11 @@ jobs:
             venv/*
           max-file-size: '5242880'
 
-      - name: Print summary
-        run: cat ${{ steps.digest.outputs.summary-file }}
+      - name: Display backend analysis
+        run: |
+          echo "🗂️  Monorepo Analysis (Backend only - Python files):"
+          echo "===================================================="
+          echo "📍 Source: fastapi-nextjs-clerk/backend"
+          echo "🔍 Max file size: 5MB"
+          echo ""
+          cat ${{ steps.digest.outputs.summary-file }}

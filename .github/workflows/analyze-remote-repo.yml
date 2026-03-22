@@ -5,11 +5,18 @@ jobs:
   digest:
     runs-on: ubuntu-latest
     steps:
-      - uses: ysskrishna/gitingest-action@v1
+      # This example analyzes a remote repository without checking it out
+      # Useful for: Analyzing repos you don't own, quick analysis without cloning
+      # Example: pypi-package-stats - CLI for PyPI package download analytics
+      - name: Analyze remote repository
+        uses: ysskrishna/gitingest-action@v1
         id: digest
         with:
-          source: 'https://github.com/coderamp-labs/gitingest'
+          source: 'https://github.com/ysskrishna/pypi-package-stats'
           branch: 'main'
 
-      - name: Print summary
-        run: cat ${{ steps.digest.outputs.summary-file }}
+      - name: Display repository summary
+        run: |
+          echo "📊 Repository Digest Summary:"
+          echo "================================"
+          cat ${{ steps.digest.outputs.summary-file }}

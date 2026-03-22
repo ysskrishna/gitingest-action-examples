@@ -5,11 +5,18 @@ jobs:
   digest:
     runs-on: ubuntu-latest
     steps:
-      - uses: ysskrishna/gitingest-action@v1
+      # This example analyzes a private repository using authentication
+      # Useful for: Analyzing private repos, organization repos with restricted access
+      # Note: GITHUB_TOKEN has access to repos in the same org/account by default
+      - name: Analyze private repository
+        uses: ysskrishna/gitingest-action@v1
         id: digest
         with:
           source: 'https://github.com/ysskrishna/theprovenclub-backend'
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Print summary
-        run: cat ${{ steps.digest.outputs.summary-file }}
+      - name: Display private repo analysis
+        run: |
+          echo "🔒 Private Repository Analysis:"
+          echo "================================"
+          cat ${{ steps.digest.outputs.summary-file }}

@@ -5,11 +5,18 @@ jobs:
   digest:
     runs-on: ubuntu-latest
     steps:
-      - uses: ysskrishna/gitingest-action@v1
+      # This example analyzes a specific release/tag
+      # Useful for: Release notes, analyzing specific versions, comparing releases
+      # Example: social-links - Python library for social media URL validation
+      - name: Analyze specific tag
+        uses: ysskrishna/gitingest-action@v1
         id: digest
         with:
-          source: 'https://github.com/coderamp-labs/gitingest'
-          tag: 'v0.3.1'
+          source: 'https://github.com/ysskrishna/social-links'
+          tag: 'v1.3.1'
 
-      - name: Print summary
-        run: cat ${{ steps.digest.outputs.summary-file }}
+      - name: Display tag analysis
+        run: |
+          echo "🏷️  Tag Analysis (social-links v1.3.1):"
+          echo "========================================"
+          cat ${{ steps.digest.outputs.summary-file }}

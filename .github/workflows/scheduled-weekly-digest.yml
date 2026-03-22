@@ -8,17 +8,33 @@ jobs:
   digest:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-
-      - uses: ysskrishna/gitingest-action@v1
+      # This example runs on a schedule and archives results with date-stamped names
+      # Useful for: Weekly snapshots, tracking codebase evolution, automated documentation
+      # Schedule: Every Monday at 9 AM UTC (cron: '0 9 * * 1')
+      # Example: container-detect - Detect if Python is running in containers
+      - name: Generate weekly repository digest
+        uses: ysskrishna/gitingest-action@v1
         id: digest
         with:
+          source: 'https://github.com/ysskrishna/container-detect'
           output-dir: 'digest'
 
-      - name: Print summary
-        run: cat ${{ steps.digest.outputs.summary-file }}
+      - name: Display digest summary
+        run: |
+          echo "📅 Weekly Repository Digest:"
+          echo "============================"
+          echo "🕐 Generated: $(date)"
+          echo ""
+          cat ${{ steps.digest.outputs.summary-file }}
 
-      - uses: actions/upload-artifact@v4
+      - name: Upload weekly digest artifact
+        uses: actions/upload-artifact@v4
         with:
           name: weekly-digest-${{ github.run_id }}
           path: digest/
+
+      - name: Artifact info
+        run: |
+          echo ""
+          echo "✅ Weekly digest archived as: weekly-digest-${{ github.run_id }}"
+          echo "📦 Contains complete repository snapshot for $(date +%Y-%m-%d)"

@@ -5,17 +5,32 @@ jobs:
   digest:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-
-      - uses: ysskrishna/gitingest-action@v1
+      # This example saves all digest files as downloadable artifacts
+      # Useful for: Archiving analysis, sharing with team, historical snapshots
+      # Example: dbconvert - Database conversion CLI/GUI tool
+      - name: Generate repository digest
+        uses: ysskrishna/gitingest-action@v1
         id: digest
         with:
+          source: 'https://github.com/ysskrishna/dbconvert'
           output-dir: 'digest'
 
-      - name: Print summary
-        run: cat ${{ steps.digest.outputs.summary-file }}
+      - name: Display summary
+        run: |
+          echo "📦 Repository digest generated in: digest/"
+          echo "============================================="
+          cat ${{ steps.digest.outputs.summary-file }}
 
-      - uses: actions/upload-artifact@v4
+      - name: Upload complete digest as artifact
+        uses: actions/upload-artifact@v4
         with:
           name: repo-digest
           path: digest/
+
+      - name: Artifact info
+        run: |
+          echo ""
+          echo "✅ Artifact uploaded! Includes:"
+          echo "   - summary.txt (repository overview)"
+          echo "   - tree.txt (directory structure)"
+          echo "   - content.txt (full file contents)"

@@ -5,11 +5,14 @@ jobs:
   digest:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-
-      - uses: ysskrishna/gitingest-action@v1
+      # This example demonstrates pattern filtering
+      # Useful for: Analyzing only specific file types, excluding test/docs folders
+      # Example: nestedutils - Python library for nested dict/list access
+      - name: Analyze with pattern filters
+        uses: ysskrishna/gitingest-action@v1
         id: digest
         with:
+          source: 'https://github.com/ysskrishna/nestedutils'
           include-patterns: |
             *.py
             *.md
@@ -17,5 +20,8 @@ jobs:
             tests/*
             docs/*
 
-      - name: Print summary
-        run: cat ${{ steps.digest.outputs.summary-file }}
+      - name: Display filtered results
+        run: |
+          echo "🔍 Filtered Analysis (Python & Markdown files only):"
+          echo "===================================================="
+          cat ${{ steps.digest.outputs.summary-file }}

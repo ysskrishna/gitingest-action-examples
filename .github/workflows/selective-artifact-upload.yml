@@ -5,17 +5,33 @@ jobs:
   digest:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-
-      - uses: ysskrishna/gitingest-action@v1
+      # This example uploads only summary and tree files (skips large content.txt)
+      # Useful for: Saving artifact storage, when you only need overview/structure
+      # Example: docker-detector - Detect Python processes in Docker containers
+      - name: Generate repository digest
+        uses: ysskrishna/gitingest-action@v1
         id: digest
+        with:
+          source: 'https://github.com/ysskrishna/docker-detector'
 
-      - name: Print summary
-        run: cat ${{ steps.digest.outputs.summary-file }}
+      - name: Display summary
+        run: |
+          echo "📋 Selective artifact upload (summary + tree only):"
+          echo "===================================================="
+          cat ${{ steps.digest.outputs.summary-file }}
 
-      - uses: actions/upload-artifact@v4
+      - name: Upload overview files only
+        uses: actions/upload-artifact@v4
         with:
           name: repo-overview
           path: |
             ${{ steps.digest.outputs.summary-file }}
             ${{ steps.digest.outputs.tree-file }}
+
+      - name: Artifact info
+        run: |
+          echo ""
+          echo "✅ Selective artifact uploaded! Includes:"
+          echo "   - summary.txt (repository overview)"
+          echo "   - tree.txt (directory structure)"
+          echo "   ⚠️  content.txt excluded to save storage space"
