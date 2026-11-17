@@ -3,6 +3,7 @@
 [![GitHub Marketplace](https://img.shields.io/badge/Marketplace-gitingest--action-blue?logo=github)](https://github.com/marketplace/actions/gitingest)
 [![GitHub Action](https://img.shields.io/badge/action-gitingest-orange?logo=github-actions)](https://github.com/ysskrishna/gitingest-action)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Author site](https://img.shields.io/badge/author-ysskrishna.space-informational)](https://ysskrishna.space)
 
 Ready-to-use GitHub Actions workflows demonstrating common [gitingest-action](https://github.com/marketplace/actions/gitingest) patterns — a tool that creates comprehensive digests of your codebase for AI analysis, documentation, and code review.
 
@@ -169,20 +170,39 @@ The action has built-in limits to prevent excessive processing. Understanding th
 - **Security Audits** — Analyze full repository content for security reviews
 - **Migration Planning** — Understand codebase structure before major refactors
 
-## License
-
-MIT © [Y. Siva Sai Krishna](https://github.com/ysskrishna) — see [LICENSE](LICENSE) for details.
-
 ## Credits
 
 Examples for [gitingest-action](https://github.com/ysskrishna/gitingest-action). Built on [gitingest](https://github.com/coderamp-labs/gitingest).
+
+## Built and maintained by
+
+gitingest-action Examples is built and maintained by:
+
+| | Name | GitHub | Role |
+|---|------|--------|------|
+| <img src="https://github.com/ysskrishna.png?size=120" width="60" height="60" alt="Y. Siva Sai Krishna"> | **Y. Siva Sai Krishna** | [@ysskrishna](https://github.com/ysskrishna) | Creator |
+
+## Support
+
+If you find this project helpful:
+
+- ⭐ Star the repository
+- 🐛 [Report issues](https://github.com/ysskrishna/gitingest-action-examples/issues)
+- 🔀 Submit pull requests
+- 💝 [Sponsor on GitHub](https://github.com/sponsors/ysskrishna)
+
+## License
+
+MIT © [Y. Siva Sai Krishna](https://github.com/ysskrishna) — see [LICENSE](LICENSE) for details.
 
 ---
 
 <p align="left">
   <a href="https://github.com/ysskrishna">Author's GitHub</a> •
   <a href="https://linkedin.com/in/ysskrishna">Author's LinkedIn</a> •
+  <a href="https://ysskrishna.space">Author's site</a> •
   <a href="https://github.com/marketplace/actions/gitingest">GitHub Marketplace</a> •
   <a href="https://github.com/ysskrishna/gitingest-action">gitingest-action</a> •
-  <a href="https://github.com/coderamp-labs/gitingest">gitingest Documentation</a>
+  <a href="https://github.com/coderamp-labs/gitingest">gitingest Documentation</a> •
+  <a href="https://github.com/ysskrishna/gitingest-action-examples/issues">Report Issues</a>
 </p>

@@ -1,6 +1,9 @@
 name: Monorepo - Analyze Backend Only
 on: workflow_dispatch
 
+permissions:
+  contents: read
+
 jobs:
   digest:
     runs-on: ubuntu-latest
