@@ -1,6 +1,9 @@
 name: Filter Files with Patterns
 on: workflow_dispatch
 
+permissions:
+  contents: read
+
 jobs:
   digest:
     runs-on: ubuntu-latest
